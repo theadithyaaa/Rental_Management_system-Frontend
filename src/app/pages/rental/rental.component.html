@@ -1,1 +1,87 @@
 <app-navbar></app-navbar>
+<h1 class="h1">Add Rental</h1>
+<br>
+<div class="container">
+    <div class="title">Rental Information</div>
+    <form id="rentalForm" (ngSubmit)="addRental()">
+        <div class="input-field">
+            <label for="rentId">Rental ID</label>
+            <input type="text" id="rentId" name="rentId" [(ngModel)]="rental.rentId" placeholder="Enter rental ID" required>
+        </div>
+        
+        <div class="input-field">
+            <label for="rentalDate">Rental Date</label>
+            <input type="date" id="rentalDate" name="rentalDate" [(ngModel)]="rental.rentalDate" required>
+        </div>
+        
+        <div class="input-field">
+            <label for="returnDate">Return Date</label>
+            <input type="date" id="returnDate" name="returnDate" [(ngModel)]="rental.returnDate" required>
+        </div>
+        
+        <div class="input-field">
+            <label for="dueDate">Due Date</label>
+            <input type="date" id="dueDate" name="dueDate" [(ngModel)]="rental.dueDate" required>
+        </div>
+        
+        <div class="input-field">
+            <label for="fine">Fine</label>
+            <input type="number" id="fine" name="fine" [(ngModel)]="rental.fine" placeholder="Enter fine amount" required>
+        </div>
+        
+        <div class="input-field">
+            <label for="totalcost">Total Cost</label>
+            <input type="number" id="totalcost" name="totalcost" [(ngModel)]="rental.totalcost" placeholder="Enter total cost" required>
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<br>
+<h1 class="h1">Search Rental</h1>
+
+<div class="searchbar">
+    <input type="text" class="search" placeholder="Enter Rental ID" [(ngModel)]="id">
+    <button class="searchbutton" (click)="searchRentalById(id)">Search</button>
+</div>
+
+<div class="details">
+    <div *ngIf="rentalInfo.rentId">
+        <p>Rental ID: <span class="txt">{{ rentalInfo.rentId }}</span></p>
+        <p>Rental Date: <input class="txt" type="date" [(ngModel)]="updatedRentalInfo.rentalDate" /></p>
+        <p>Return Date: <input class="txt" type="date" [(ngModel)]="updatedRentalInfo.returnDate" /></p>
+        <p>Due Date: <input class="txt" type="date" [(ngModel)]="updatedRentalInfo.dueDate" /></p>
+        <p>Fine: <input class="txt" type="number" [(ngModel)]="updatedRentalInfo.fine" /></p>
+        <p>Total Cost: <input class="txt" type="number" [(ngModel)]="updatedRentalInfo.totalcost" /></p>
+        
+        <div class="buttons">
+            <button (click)="updateRental()" class="update">Update</button>
+            <button (click)="deleteRental()" class="delete">Delete</button>
+        </div>
+    </div>
+</div>
+
+<h1 class="h1">Rental List</h1>
+<table class="rental-table">
+  <thead>
+    <tr>
+      <th>Rental ID</th>
+      <th>Rental Date</th>
+      <th>Return Date</th>
+      <th>Due Date</th>
+      <th>Fine</th>
+      <th>Total Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rental of rentals">
+      <td>{{ rental.rentId }}</td>
+      <td>{{ rental.rentalDate }}</td>
+      <td>{{ rental.returnDate }}</td>
+      <td>{{ rental.dueDate }}</td>
+      <td>{{ rental.fine }}</td>
+      <td>{{ rental.totalcost }}</td>
+    </tr>
+  </tbody>
+</table>
