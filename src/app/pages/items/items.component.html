@@ -1,1 +1,79 @@
 <app-navbar></app-navbar>
+<h1 class="h1">Add Item</h1>
+<br>
+<div class="container">
+    <div class="title">Item Information</div>
+    <form id="itemForm" (ngSubmit)="addItem()">
+        <div class="input-field">
+            <label for="itemId">Item ID</label>
+            <input type="text" id="itemId" name="itemId" [(ngModel)]="item.itemId" placeholder="Enter item ID" required>
+        </div>
+        
+        <div class="input-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" [(ngModel)]="item.name" placeholder="Enter item name" required>
+        </div>
+        
+        <div class="input-field">
+            <label for="availability">Availability</label>
+            <input type="checkbox" id="availability" name="availability" [(ngModel)]="item.availability">
+        </div>
+        
+        <div class="input-field">
+            <label for="rental_perday">Rental per day</label>
+            <input type="number" id="rental_perday" name="rental_perday" [(ngModel)]="item.rental_perday" placeholder="Enter rental per day" required>
+        </div>
+        
+        <div class="input-field">
+            <label for="fine_perday">Fine per day</label>
+            <input type="number" id="fine_perday" name="fine_perday" [(ngModel)]="item.fine_perday" placeholder="Enter fine per day" required>
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<br>
+<h1 class="h1">Search Item</h1>
+
+<div class="searchbar">
+    <input type="text" class="search" placeholder="Enter Item ID" [(ngModel)]="id">
+    <button class="searchbutton" (click)="searchItemById(id)">Search</button>
+</div>
+
+<div class="details">
+    <div *ngIf="itemInfo.itemId">
+        <p>Item ID: <span class="txt">{{ itemInfo.itemId }}</span></p>
+        <p>Name: <input class="txt" [(ngModel)]="updatedItemInfo.name" /></p>
+        <p>Availability: <input class="txt" type="checkbox" [(ngModel)]="updatedItemInfo.availability" /></p>
+        <p>Rental per day: <input class="txt" [(ngModel)]="updatedItemInfo.rental_perday" /></p>
+        <p>Fine per day: <input class="txt" [(ngModel)]="updatedItemInfo.fine_perday" /></p>
+        
+        <div class="buttons">
+            <button (click)="updateItem()" class="update">Update</button>
+            <button (click)="deleteItem()" class="delete">Delete</button>
+        </div>
+    </div>
+</div>
+
+<h1 class="h1">Item List</h1>
+<table class="item-table">
+  <thead>
+    <tr>
+      <th>Item ID</th>
+      <th>Name</th>
+      <th>Availability</th>
+      <th>Rental per day</th>
+      <th>Fine per day</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.itemId }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.availability ? 'Available' : 'Not Available' }}</td>
+      <td>{{ item.rental_perday }}</td>
+      <td>{{ item.fine_perday }}</td>
+    </tr>
+  </tbody>
+</table>
