@@ -1,0 +1,31 @@
+.bill-container {
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .bill-container h2, h3 {
+    margin-bottom: 15px;
+  }
+  
+  .bill-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .bill-container table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  .bill-container th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .bill-container tfoot {
+    font-weight: bold;
+  }
+  

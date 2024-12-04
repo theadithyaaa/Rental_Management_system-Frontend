@@ -5,6 +5,7 @@ import { CustomersComponent } from './pages/customers/customers.component';
 import { ItemsComponent } from './pages/items/items.component';
 import { RentalComponent } from './pages/rental/rental.component';
 import { CustomerDashboardComponent } from './pages/customer-dashboard/customer-dashboard.component';
+import { BillComponent } from './pages/bill/bill.component';
 
 export const routes: Routes = [
     {
@@ -30,5 +31,9 @@ export const routes: Routes = [
     {
         path: 'customerDashboard',
         component: CustomerDashboardComponent
+    },
+    {
+        path: 'bill',
+        component: BillComponent
     }
 ];

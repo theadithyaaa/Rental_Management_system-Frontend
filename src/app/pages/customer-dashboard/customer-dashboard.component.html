@@ -1,1 +1,23 @@
-<p>customer-dashboard works!</p>
+<h1 class="h1">Customer List</h1>
+<table class="property-table">
+  <thead>
+    <tr>
+      <th>Customer ID</th>
+      <th>Full Name</th>
+      <th>Contact</th>
+      <th>City</th>
+      <!-- <th>Actions</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.customerId }}</td>
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.contact }}</td>
+      <td>{{ customer.city }}</td>
+      <!-- <td>
+        <button (click)="getAllCustomers()">View</button>
+      </td> -->
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,53 @@
+.property-table-container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+    overflow-x: auto;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .property-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .property-table th, .property-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .property-table th {
+    background-color: #4F709C;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .property-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .property-table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  .property-table td {
+    color: #555;
+  }
+  
+  .property-table th:first-child, 
+  .property-table td:first-child {
+    border-left: 1px solid #ddd;
+  }
+  
+  .property-table th:last-child, 
+  .property-table td:last-child {
+    border-right: 1px solid #ddd;
+  }
+  
+ 

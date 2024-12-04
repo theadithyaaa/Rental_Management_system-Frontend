@@ -1,0 +1,42 @@
+<div class="bill-container">
+    <h2>Generate Customer Bill</h2>
+    <div>
+      <label for="customerId">Customer ID:</label>
+      <input 
+        type="text" 
+        id="customerId" 
+        [(ngModel)]="customerId" 
+        placeholder="Enter Customer ID" 
+      />
+      <button (click)="getCustomerBill(customerId)">Generate Bill</button>
+    </div>
+  
+    <div *ngIf="customerBill">
+      <h3>Bill for Customer ID: {{ customerBill.customerId }}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Rental ID</th>
+            <th>Rental Date</th>
+            <th>Return Date</th>
+            <th>Total Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rental of customerBill.rentals">
+            <td>{{ rental.rentId }}</td>
+            <td>{{ rental.rentalDate }}</td>
+            <td>{{ rental.returnDate }}</td>
+            <td>{{ rental.totalcost }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3"><strong>Total Cost</strong></td>
+            <td><strong>{{ customerBill.totalCost }}</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  
