@@ -33,7 +33,7 @@
 
 <div class="searchbar">
     <input type="text" class="search" placeholder="Enter Customer ID" [(ngModel)]="id">
-    <button class="searchbtn" (click)="searchCustomerById(id)">Search</button>
+    <button class="searchbutton" (click)="searchCustomerById(id)">Search</button>
 </div>
 
 <div class="details">
@@ -50,3 +50,27 @@
     </div>
     
 </div>
+
+<h1 class="h1">Customer List</h1>
+<table class="property-table">
+  <thead>
+    <tr>
+      <th>Customer ID</th>
+      <th>Full Name</th>
+      <th>Contact</th>
+      <th>City</th>
+      <!-- <th>Actions</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.customerId }}</td>
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.contact }}</td>
+      <td>{{ customer.city }}</td>
+      <!-- <td>
+        <button (click)="getAllCustomers()">View</button>
+      </td> -->
+    </tr>
+  </tbody>
+</table>

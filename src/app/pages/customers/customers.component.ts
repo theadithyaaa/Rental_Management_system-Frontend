@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NavbarComponent } from "../../common/navbar/navbar.component";
 import { FormsModule, NgModel } from '@angular/forms';
@@ -11,8 +11,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './customers.component.html',
   styleUrl: './customers.component.css'
 })
-export class CustomersComponent {
+export class CustomersComponent implements OnInit {
 
+  customers: any[] = [];
   customer = {
     customerId: '',
     name: '',
@@ -160,6 +161,33 @@ export class CustomersComponent {
     };
 
     this.id = '';
+  }
+
+  ngOnInit() {
+    this.getAllCustomers();
+  }
+
+  async getAllCustomers() {
+    try {
+      this.loading = true;
+      const response = await fetch('http://localhost:8080/customer/get-all', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch customers');
+      }
+
+      const customers = await response.json();
+      console.log(customers); 
+      this.customers = customers;
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while fetching customers.');
+    } finally {
+      this.loading = false;
+    }
   }
   }
 
