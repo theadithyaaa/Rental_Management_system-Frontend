@@ -1,1 +1,52 @@
-<p>customers works!</p>
+<app-navbar></app-navbar>
+<h1 class="h1">Add Customer</h1>
+<br>
+<div class="container">
+    <div class="title">Customer Information</div>
+    <form id="customerForm" (ngSubmit)="addCustomer()">
+        <div class="input-field">
+            <label for="customerId">Customer ID</label>
+            <input type="text" id="customerId" name="customerId" [(ngModel)]="customer.customerId" placeholder="Enter customer ID" required>
+        </div>
+        
+        <div class="input-field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" [(ngModel)]="customer.name" placeholder="Enter your full name" required>
+        </div>
+        
+        <div class="input-field">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" [(ngModel)]="customer.city" placeholder="Enter your city" required>
+        </div>
+        
+        <div class="input-field">
+            <label for="contact">Contact Number</label>
+            <input type="tel" id="contact" name="contact" [(ngModel)]="customer.contact" placeholder="Enter contact number" required>
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+    
+</div>
+<br>
+<h1 class="h1">Search Customer</h1>
+
+<div class="searchbar">
+    <input type="text" class="search" placeholder="Enter Customer ID" [(ngModel)]="id">
+    <button class="searchbtn" (click)="searchCustomerById(id)">Search</button>
+</div>
+
+<div class="details">
+    <div *ngIf="customerInfo.customerId">
+        <p>Customer ID: <span class="txt">{{ customerInfo.customerId }}</span></p>
+        <p>Full Name: <input class="txt" [(ngModel)]="updatedCustomerInfo.name" /></p>
+        <p>Contact Number: <input class="txt" [(ngModel)]="updatedCustomerInfo.contact" /></p>
+        <p>City: <input class="txt" [(ngModel)]="updatedCustomerInfo.city" /></p>
+        
+        <div class="buttons">
+            <button (click)="updateCustomer()" class="update">Update</button>
+            <button (click)="deleteCustomer()" class="delete">Delete</button>
+        </div>
+    </div>
+    
+</div>
